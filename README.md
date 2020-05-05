@@ -1,6 +1,6 @@
 ## Context Project CG-1
 
-###Name:  Defuse the bomb
+### Name:  Defuse the bomb
 
 ##### Game Engine: Godot
 ##### Object recognition: OpenCV
