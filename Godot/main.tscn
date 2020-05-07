@@ -9,3 +9,4 @@
 texture = ExtResource( 2 )
 centered = false
 script = ExtResource( 1 )
+amplitude = 1000.0
