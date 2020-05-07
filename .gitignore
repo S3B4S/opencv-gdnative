@@ -364,6 +364,7 @@ pip-selfcheck.json
 
 # Custom added
 .vs/
+
 ## Generated during cpp builds (I think at least) ~ Kevin
 .sconsign.dblite
 vc140.idb
