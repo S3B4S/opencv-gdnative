@@ -5,6 +5,10 @@ using namespace godot;
 void GDExample::_register_methods() {
     register_method("_process", &GDExample::_process);
     register_property<GDExample, float>("amplitude", &GDExample::amplitude, 10.0);
+
+    // First is name of signal
+    // After that you have pairs of values that specify parameter name and type of each parameter we send to signal
+    register_signal<GDExample>((char*)"position_changed", "node", GODOT_VARIANT_TYPE_OBJECT, "new_pos", GODOT_VARIANT_TYPE_VECTOR2);
 }
 
 GDExample::GDExample() {
@@ -17,6 +21,7 @@ GDExample::~GDExample() {
 void GDExample::_init() {
     // initialize any variables here
     time_passed = 0.0;
+    time_emit = 0.0;
     amplitude = 10.0;
 }
 
@@ -29,4 +34,11 @@ void GDExample::_process(float delta) {
     );
 
     set_position(new_position);
+
+    time_emit += delta;
+    // If a second has passed
+    if (time_emit > 1.0) {
+        emit_signal("position_changed", this, new_position);
+        time_emit = 0.0;
+    }
 }

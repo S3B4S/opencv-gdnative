@@ -11,6 +11,7 @@ namespace godot {
 
     private:
         float time_passed;
+        float time_emit;
         float amplitude;
 
     public:
