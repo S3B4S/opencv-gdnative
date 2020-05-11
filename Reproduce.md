@@ -5,15 +5,17 @@ We will start a fresh project, so that we can ensure potential existing issues a
 
 ## Setting up GDNative
 First, follow the example described [here](https://docs.godotengine.org/en/stable/tutorials/plugins/gdnative/gdnative-cpp-example.html).
-	- It includes the prerequisites you need.
-	- Go with the Godot and NativeScript 1.1 tabs/examples.
+* It includes the prerequisites you need.
+* Go with the Godot and NativeScript 1.1 tabs/examples.
+
 If you're on Windows and you encounter the `module machine type 'x64' conflicts with target machine type 'x86'` error while running `scons platform=windows`, you need to set your environment to `x64`. In this repo you can find a `set64.cmd` that executes the `.bat` file on your pc with the argument `x64` that will do this.
 For more information on this error, see the second approach of the accepted answer [here](https://stackoverflow.com/questions/31595869/how-to-resolve-the-module-machine-type-x86-conflicts-with-target-machine-type).
 
 ## Setting up OpenCV
 Eventually, previous step should be completed and working, do not proceed it it's not working.
 For our next step, we'll install OpenCV, follow the instructions found in their [documentation](https://docs.opencv.org/master/df/d65/tutorial_table_of_content_introduction.html), choose the correct introduction depending on your OS.
-	- [Here](https://medium.com/@subwaymatch/opencv-410-with-vs-2019-3d0bc0c81d96)'s an alternative tutorial. While setting it up is mostly relevant for Windows, it also includes some minimal code to test if it's indeed working correctly, that part is also relevant for other OS.
+* [Here](https://medium.com/@subwaymatch/opencv-410-with-vs-2019-3d0bc0c81d96)'s an alternative tutorial. While setting it up is mostly relevant for Windows, it also includes some minimal code to test if it's indeed working correctly, that part is also relevant for other OS.
+
 Note; include the `lib/` version that contains the `.lib` file, do not include `.dll`. The difference is that if you include `.lib`, the library will get inlined with the compiled code, as opposed to including a `.dll`, where it won't inline the library code and you need to also ship the opencv `.dll`.
 Each option has its pros and cons but for now we go with the `.lib` variant for ease.
 
