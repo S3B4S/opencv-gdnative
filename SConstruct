@@ -19,6 +19,7 @@ godot_headers_path = "godot-cpp/godot_headers/"
 cpp_bindings_path = "godot-cpp/"
 cpp_library = "libgodot-cpp"
 
+print(os.environ['OPENCV_DIR'])
 # only support 64 at this time..
 bits = 64
 
@@ -91,9 +92,19 @@ else:
 cpp_library += '.' + str(bits)
 
 # make sure our binding library is properly includes
-env.Append(CPPPATH=['.', godot_headers_path, cpp_bindings_path + 'include/', cpp_bindings_path + 'include/core/', cpp_bindings_path + 'include/gen/'])
-env.Append(LIBPATH=[cpp_bindings_path + 'bin/'])
-env.Append(LIBS=[cpp_library])
+env.Append(CPPPATH=[
+    # cpp bindings
+    '.', godot_headers_path, cpp_bindings_path + 'include/', cpp_bindings_path + 'include/core/', cpp_bindings_path + 'include/gen/',
+    # opencv library
+    os.environ['OPENCV_DIR'] + "/../../include/"
+])
+env.Append(LIBPATH=[
+    # cpp bindings
+    cpp_bindings_path + 'bin/',
+    # opencv library
+    os.environ['OPENCV_DIR'] + "/lib/"
+])
+env.Append(LIBS=[cpp_library, "opencv_world430d"]) # Have to omit ".lib", it gets appended in runtime
 
 # tweak this if you want to use different folders, or more folders, to store your source code in.
 env.Append(CPPPATH=['src/'])
