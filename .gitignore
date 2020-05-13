@@ -363,6 +363,7 @@ pyvenv.cfg
 pip-selfcheck.json
 
 # Custom added
+*.os
 .vs/
 
 ## Generated during cpp builds (I think at least) ~ Kevin
