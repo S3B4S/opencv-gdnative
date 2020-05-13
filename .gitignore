@@ -352,7 +352,7 @@ data_*/
 # Virtualenv
 # http://iamzed.com/2009/05/07/a-primer-on-virtualenv/
 .Python
-[Bb]in
+[Bb]in/*
 [Ii]nclude
 [Ll]ib
 [Ll]ib64
@@ -365,6 +365,10 @@ pip-selfcheck.json
 # Custom added
 *.os
 .vs/
+
+Godot/[Bb]in/*
+!Godot/[Bb]in/*.gdnlib
+!Godot/[Bb]in/*.gdns
 
 ## Generated during cpp builds (I think at least) ~ Kevin
 .sconsign.dblite
