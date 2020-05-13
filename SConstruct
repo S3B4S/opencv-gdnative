@@ -96,7 +96,7 @@ env.Append(CPPPATH=[
     # cpp bindings
     '.', godot_headers_path, cpp_bindings_path + 'include/', cpp_bindings_path + 'include/core/', cpp_bindings_path + 'include/gen/',
     # opencv library
-    os.environ['OPENCV_DIR'] + "/../../include/"
+    os.environ['OPENCV_DIR'] + "/include/"
 ])
 env.Append(LIBPATH=[
     # cpp bindings
@@ -104,7 +104,26 @@ env.Append(LIBPATH=[
     # opencv library
     os.environ['OPENCV_DIR'] + "/lib/"
 ])
-env.Append(LIBS=[cpp_library, "opencv_world430d"]) # Have to omit ".lib", it gets appended in runtime
+
+# Omit file extensions such as '.lib' and '.dylib', they get appended in runtime depending on the OS
+env.Append(LIBS=[
+    cpp_library, 
+    "opencv_calib3d430",
+    "opencv_core430",
+    "opencv_dnn430",
+    "opencv_features2d430",
+    "opencv_flann430",
+    "opencv_gapi430",
+    "opencv_highgui430",
+    "opencv_imgcodecs430",
+    "opencv_imgproc430",
+    "opencv_ml430",
+    "opencv_objdetect430",
+    "opencv_photo430",
+    "opencv_stitching430",
+    "opencv_video430",
+    "opencv_videoio430",
+])
 
 # tweak this if you want to use different folders, or more folders, to store your source code in.
 env.Append(CPPPATH=['src/'])

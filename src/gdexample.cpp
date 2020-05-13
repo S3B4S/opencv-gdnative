@@ -4,8 +4,9 @@
 #include <opencv2/imgproc.hpp>
 #include <iostream>
 
-using namespace godot;
 using namespace cv;
+using namespace std;
+using namespace godot;
 
 void GDExample::_register_methods() {
     register_method("_process", &GDExample::_process);
@@ -29,8 +30,8 @@ void GDExample::_init() {
     time_emit = 0.0;
     amplitude = 10.0;
 
-    // Mat image = Mat::zeros(300, 600, CV_8UC3);
-    // circle(image, Point(250, 150), 100, Scalar(0, 255, 128), -100);
+    Mat image = Mat::zeros(300, 600, CV_8UC3);
+    circle(image, Point(250, 150), 100, Scalar(0, 255, 128), -100);
     // circle(image, Point(350, 150), 100, Scalar(255, 255, 255), -100);
     // imshow("Display Window", image);
 }
