@@ -91,39 +91,95 @@ else:
 
 cpp_library += '.' + str(bits)
 
-# make sure our binding library is properly includes
-env.Append(CPPPATH=[
-    # cpp bindings
-    '.', godot_headers_path, cpp_bindings_path + 'include/', cpp_bindings_path + 'include/core/', cpp_bindings_path + 'include/gen/',
-    # opencv library
-    os.environ['OPENCV_DIR'] + "/include/"
-])
-env.Append(LIBPATH=[
-    # cpp bindings
-    cpp_bindings_path + 'bin/',
-    # opencv library
-    os.environ['OPENCV_DIR'] + "/lib/"
-])
+# make sure our binding library is properly included
+env.Append(CPPPATH=['.', godot_headers_path, cpp_bindings_path + 'include/', cpp_bindings_path + 'include/core/', cpp_bindings_path + 'include/gen/'])
+env.Append(LIBPATH=[cpp_bindings_path + 'bin/'])
+env.Append(LIBS=[cpp_library])
 
-# Omit file extensions such as '.lib' and '.dylib', they get appended in runtime depending on the OS
-env.Append(LIBS=[
-    cpp_library, 
-    "opencv_calib3d430",
-    "opencv_core430",
-    "opencv_dnn430",
-    "opencv_features2d430",
-    "opencv_flann430",
-    "opencv_gapi430",
-    "opencv_highgui430",
-    "opencv_imgcodecs430",
-    "opencv_imgproc430",
-    "opencv_ml430",
-    "opencv_objdetect430",
-    "opencv_photo430",
-    "opencv_stitching430",
-    "opencv_video430",
-    "opencv_videoio430",
-])
+# Add OpenCV configuration
+# At LIBS, omit file extensions such as '.lib' and '.dylib', they get appended in runtime depending on the OS
+# Configuration for linux has not been tested, but for now I assume it's similar to OSX
+
+# For OSX these files have been filled in under assumption that you installed opencv using homebrew
+if env['platform'] == "osx" or env['platform'] in ('x11', 'linux'):
+    env.Append(CPPPATH=[os.environ['OPENCV_DIR'] + "/include/opencv4/"])
+    env.Append(LIBPATH=[os.environ['OPENCV_DIR'] + "/lib/"])
+    env.Append(LIBS=[
+        "libopencv_alphamat.4.3.0",
+        "libopencv_aruco.4.3.0",
+        "libopencv_bgsegm.4.3.0",
+        "libopencv_bioinspired.4.3.0",
+        "libopencv_calib3d.4.3.0",
+        "libopencv_ccalib.4.3.0",
+        "libopencv_core.4.3.0",
+        "libopencv_datasets.4.3.0",
+        "libopencv_dnn_objdetect.4.3.0",
+        "libopencv_dnn_superres.4.3.0",
+        "libopencv_dnn.4.3.0",
+        "libopencv_dpm.4.3.0",
+        "libopencv_face.4.3.0",
+        "libopencv_features2d.4.3.0",
+        "libopencv_flann.4.3.0",
+        "libopencv_freetype.4.3.0",
+        "libopencv_fuzzy.4.3.0",
+        "libopencv_gapi.4.3.0",
+        "libopencv_hfs.4.3.0",
+        "libopencv_highgui.4.3.0",
+        "libopencv_img_hash.4.3.0",
+        "libopencv_imgcodecs.4.3.0",
+        "libopencv_imgproc.4.3.0",
+        "libopencv_intensity_transform.4.3.0",
+        "libopencv_line_descriptor.4.3.0",
+        "libopencv_ml.4.3.0",
+        "libopencv_objdetect.4.3.0",
+        "libopencv_optflow.4.3.0",
+        "libopencv_phase_unwrapping.4.3.0",
+        "libopencv_photo.4.3.0",
+        "libopencv_plot.4.3.0",
+        "libopencv_quality.4.3.0",
+        "libopencv_rapid.4.3.0",
+        "libopencv_reg.4.3.0",
+        "libopencv_rgbd.4.3.0",
+        "libopencv_saliency.4.3.0",
+        "libopencv_sfm.4.3.0",
+        "libopencv_shape.4.3.0",
+        "libopencv_stereo.4.3.0",
+        "libopencv_stitching.4.3.0",
+        "libopencv_structured_light.4.3.0",
+        "libopencv_superres.4.3.0",
+        "libopencv_surface_matching.4.3.0",
+        "libopencv_text.4.3.0",
+        "libopencv_tracking.4.3.0",
+        "libopencv_video.4.3.0",
+        "libopencv_videoio.4.3.0",
+        "libopencv_videostab.4.3.0",
+        "libopencv_xfeatures2d.4.3.0",
+        "libopencv_ximgproc.4.3.0",
+        "libopencv_xobjdetect.4.3.0",
+        "libopencv_xphoto.4.3.0",
+    ])
+# For windows, these files have been filled under assumption that you downloaded the .zip release of 4.3.0 from sourceforge
+elif env['platform'] == "windows":
+    print("DISOAJDISAJDOIASHDIO=======")
+    env.Append(CPPPATH=[os.environ['OPENCV_DIR'] + "/include/"])
+    env.Append(LIBPATH=[os.environ['OPENCV_DIR'] + "/lib/"])
+    env.Append(LIBS=[
+        "opencv_calib3d430",
+        "opencv_core430",
+        "opencv_dnn430",
+        "opencv_features2d430",
+        "opencv_flann430",
+        "opencv_gapi430",
+        "opencv_highgui430",
+        "opencv_imgcodecs430",
+        "opencv_imgproc430",
+        "opencv_ml430",
+        "opencv_objdetect430",
+        "opencv_photo430",
+        "opencv_stitching430",
+        "opencv_video430",
+        "opencv_videoio430",
+    ])
 
 # tweak this if you want to use different folders, or more folders, to store your source code in.
 env.Append(CPPPATH=['src/'])
