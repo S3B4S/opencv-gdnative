@@ -4,6 +4,8 @@
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/imgproc.hpp>
 #include <iostream>
+#include <sstream>
+#include <string>
 
 using namespace godot;
 using namespace cv;
@@ -29,15 +31,18 @@ void GDExample::_init() {
     time_passed = 0.0;
     amplitude = 10.0;
     speed = 1.0;
-    Mat image = Mat::zeros(300, 600, CV_8UC3);
-    circle(image, Point(250, 150), 100, Scalar(0, 255, 128), -100);
-    circle(image, Point(350, 150), 100, Scalar(255, 255, 255), -100);
-    imshow("Display Window", image);
-    waitKey(0);
 
+    camera.open(0); //open camera
+
+    camera.set(3, 512);
+    camera.set(4, 288);
 }
 
 void GDExample::_process(float delta) {
+    camera.read(frame);
+
+    imshow("Camera", frame);
+
     time_passed += speed * delta;
 
     Vector2 new_position = Vector2(
@@ -53,6 +58,8 @@ void GDExample::_process(float delta) {
 
         time_emit = 0.0;
     }
+
+    waitKey(30);
 }
 
 void GDExample::set_speed(float p_speed) {

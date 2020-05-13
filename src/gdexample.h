@@ -3,6 +3,8 @@
 
 #include <Godot.hpp>
 #include <Sprite.hpp>
+#include <opencv2/core/mat.hpp>
+#include <opencv2/videoio.hpp>
 
 namespace godot {
 
@@ -14,6 +16,9 @@ private:
     float time_emit;
     float amplitude;
     float speed;
+    cv::Mat image;
+    cv::VideoCapture camera;
+    cv::Mat frame;
 
 public:
     static void _register_methods();
