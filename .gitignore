@@ -369,6 +369,7 @@ pip-selfcheck.json
 Godot/[Bb]in/*
 !Godot/[Bb]in/*.gdnlib
 !Godot/[Bb]in/*.gdns
+api.json
 
 ## Generated during cpp builds (I think at least) ~ Kevin
 .sconsign.dblite
