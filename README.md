@@ -20,8 +20,8 @@ Verify that you can use this through the cli:
 $ godot --version
 3.2.1.stable.mono.official
 ```
-If you do not see above output, it likely means that your path isn't set up correctly (or the `.exe` has a different name), there are two things you can do now;
-Either you fix this by setting the path correctly so that you can use `godot` anywhere.
+If you do not see above output, it likely means that your path isn't set up correctly (or the `.exe` has a different name). There are two things you can do now;
+either you fix this by setting the path correctly so that you can use `godot` anywhere.
 Or you take the easy route, which is directly calling it as follows:
 ```
 $ "<path-to-godot-dir>/<godot-exe-name>.exe" --version
