@@ -73,7 +73,7 @@ $ git submodule update --init
 We need to generate the Godot C++ bindings so that we can make use of these when compiling our C++ scripts.
 That's why the submodule `godot-cpp` is included, they contain the source files to generate the bindings.
 
-First we do need to generate an `api.json`. (Why you ask? Beats me.)
+Before that we do need to generate an `api.json` (why you ask? Beats me).
 Once you're in the root of the project in your terminal, call the following:
 ```
 $ <godot> --gdnative-generate-json-api api.json
@@ -82,7 +82,7 @@ With `<godot>` being either the command `godot`, or a path directly to the `.exe
 The resulting `api.json` file should be placed in the root directory of the project.
 
 Now we'll actually generate the bindings.
-To speed up compilation, add `-j<N>` to the `scons` command, where `N` is the number of CPU threads you have on your system. The example below uses 4 threads.
+To speed up compilation, add `-j<N>` to the `scons` command, where `<N>` is the number of CPU threads you have on your system. The example below uses 4 threads.
 Replace `<platform>` with `windows`, `osx` or `linux` depending on your OS.
 Note: Add `bits=64` to the `scons` command if you're on Windows.
 ```
