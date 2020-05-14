@@ -36,13 +36,10 @@ void GDExample::_init() {
 
     camera.open(0); //open camera
 
-    camera.set(3, 512);
-    camera.set(4, 288);
+    // camera.set(3, 512);
+    // camera.set(4, 288);
 
-    waitKey(30);
-    imshow("", frame);
-
-    // TODO 
+    // // TODO 
     face_cascase.load("/Users/ggbrw/Downloads/opencv/data/haarcascades/haarcascade_frontalface_alt.xml");
     if(!face_cascase.load("/Users/ggbrw/Downloads/opencv/data/haarcascades/haarcascade_frontalface_alt.xml")) {
         cerr << "Error XML" << endl;
@@ -51,45 +48,23 @@ void GDExample::_init() {
 
 void GDExample::_process(float delta) {
     camera.read(frame);
-
-
-
-
-    //face detectie
-
-
-    flip(frame,frame,1);
+    if(frame.empty()) return;
+    flip(frame,frame,1); // Beeld flippen zodat de user's rechts en links overeenkomt met beeld
         
-    // if(frame.empty()) return;
-        
-        // Point matchLocation;
-        vector<Rect> faces;
-        face_cascase.detectMultiScale(frame, faces, 1.1, 3, 0, Size(100,100), Size(3000,3000));
+    vector<Rect> faces;
+    face_cascase.detectMultiScale(frame, faces, 1.1, 3, 0, Size(100,100), Size(3000,3000));
 
-       for(int i = 0; i < faces.size(); i++) {
-           Point center(faces[i].x + faces[i].width * .5, faces[i].y + faces[i].height * .5);
-           ellipse(frame, center, Size(faces[i].width * .5, faces[i].height * .5), 0, 0, 360, Scalar(255,0,255), 4, 8, 0);
-       }
+    for(int i = 0; i < faces.size(); i++) {
+        Point center(faces[i].x + faces[i].width * .5, faces[i].y + faces[i].height * .5);
+        ellipse(frame, center, Size(faces[i].width * .5, faces[i].height * .5), 0, 0, 360, Scalar(255,0,255), 4, 8, 0);
+    }
         
-        // if(faces.size() > 0) {
-        //     prevCenter = Point(faces[0].x + faces[0].width * .5, faces[0].y + faces[0].height * .5);
-        //     ellipse(frame, Point(faces[0].x + faces[0].width * .5, faces[0].y + faces[0].height * .5), Size(faces[0].width * .5, faces[0].height * .5), 0, 0, 360, Scalar(255,0,255), 4, 8, 0);
-        // }
-        
-        // location = Point(location.x + (prevCenter.x - location.x) / 8, location.y + (prevCenter.y - location.y) / 8);
-        
-        // ellipse(frame, location, Size(6,6), 0, 0, 360, Scalar(0,255,0), 2, 2, 0);
-        
-
-        if(waitKey(10) == 27) return; // stop capturing by pressing ESC
+    imshow("", frame);
+    if(waitKey(10) == 27) return;
      
 
-
-    //copy face location to the game
-    set_position(Vector2(faces[0].x + faces[0].width * .5, faces[0].y + faces[0].height * .5));
-
- 
-    waitKey(30);
+    if(faces.size() > 0) 
+        set_position(Vector2(faces[0].x + faces[0].width * .5, faces[0].y + faces[0].height * .5));
 }
 
 void GDExample::set_speed(float p_speed) {
