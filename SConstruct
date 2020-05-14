@@ -23,7 +23,6 @@ godot_headers_path = "godot-cpp/godot_headers/"
 cpp_bindings_path = "godot-cpp/"
 cpp_library = "libgodot-cpp"
 
-print(os.environ['OPENCV_DIR'])
 # only support 64 at this time..
 bits = 64
 
@@ -164,7 +163,6 @@ if env['platform'] == "osx" or env['platform'] in ('x11', 'linux'):
     ])
 # For windows, these files have been filled under assumption that you downloaded the .zip release of 4.3.0 from sourceforge
 elif env['platform'] == "windows":
-    print("DISOAJDISAJDOIASHDIO=======")
     env.Append(CPPPATH=[os.environ['OPENCV_DIR'] + "/include/"])
     env.Append(LIBPATH=[os.environ['OPENCV_DIR'] + "/lib/"])
     env.Append(LIBS=[
