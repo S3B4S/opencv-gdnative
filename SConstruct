@@ -1,5 +1,9 @@
 #!python
 import os, subprocess
+from pathlib import Path
+
+# Create `/bin` directory if it does not exist
+Path("./Godot/test").mkdir(exist_ok=True)
 
 opts = Variables([], ARGUMENTS)
 
