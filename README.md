@@ -1,8 +1,6 @@
-# Context Project CG-1
-
-## Name: Defuse the bomb
-**Game Engine: Godot**
-**Object recognition: OpenCV**
+# Defuse the bomb
+* Game engine: Godot
+* Object recognition: OpenCV
 
 ## Cloning the repository
 This section will cover cloning this repository, as well as the submodules, and how to get up and running with the project.
