@@ -2,14 +2,14 @@
 #define GDEXAMPLE_H
 
 #include <Godot.hpp>
-#include <Sprite.hpp>
+#include <Position2D.hpp>
 #include <opencv2/core/mat.hpp>
 #include <opencv2/videoio.hpp>
 
 namespace godot {
 
-class GDExample : public Sprite {
-    GODOT_CLASS(GDExample, Sprite)
+class GDExample : public Position2D {
+    GODOT_CLASS(GDExample, Position2D)
 
 private:
     float time_passed;
