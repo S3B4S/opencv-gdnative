@@ -5,6 +5,8 @@
 #include <Position2D.hpp>
 #include <opencv2/core/mat.hpp>
 #include <opencv2/videoio.hpp>
+#include <opencv2/objdetect.hpp>
+
 
 namespace godot {
 
@@ -19,6 +21,7 @@ private:
     cv::Mat image;
     cv::VideoCapture camera;
     cv::Mat frame;
+    cv::CascadeClassifier face_cascase;
 
 public:
     static void _register_methods();
