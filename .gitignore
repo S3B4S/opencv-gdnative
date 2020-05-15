@@ -375,3 +375,4 @@ api.json
 .sconsign.dblite
 vc140.idb
 vc140.pdb
+src/.vscode/settings.json
