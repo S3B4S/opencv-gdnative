@@ -22,6 +22,7 @@ private:
     cv::VideoCapture camera;
     cv::Mat frame;
     cv::CascadeClassifier face_cascase;
+    cv::Point cursorPos;
 
 public:
     static void _register_methods();
