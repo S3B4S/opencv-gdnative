@@ -52,7 +52,20 @@ Do not proceed until this works.
 @TODO when we have something working on windows (I do not want to declare a dependency already). ~ @ksavanderwerff
 
 #### MacOS
-@TODO 
+Installing OpenCV 4 for MacOS requires Xcode and homebrew.
+
+1.	**Install Xcode**  
+Install Xcode from the App Store. Open the App Store and search for Xcode and then click the Get button
+
+2. **Install Homebrew**  
+Open the terminal and execute the following code:  
+``` /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"```
+
+3. **Install OpenCV**   
+Open the terminal and execute the following code:  
+```brew install opencv```
+
+If these the steps were not sufficient, additional installation steps can be found [here](https://medium.com/@jaskaranvirdi/setting-up-opencv-and-c-development-environment-in-xcode-b6027728003).
 
 ### Visual Studio
 On Windows, you will need to install Visual Studio so that you have access to `cl.exe`, which you need when building C++.
