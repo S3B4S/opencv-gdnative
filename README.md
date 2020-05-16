@@ -2,24 +2,26 @@
 * Game engine: Godot
 * Object recognition: OpenCV
 
-## Cloning the repository
+# Getting up and running
 This section will cover cloning this repository, as well as the submodules, and how to get up and running with the project.
 
-### Prerequisites
+## Prerequisites
 * Godot 3.2.1
 * SCons 3.1.2
 * OpenCV 4.3.0
 * Windows: Visual Studio
 
-#### Godot
-You need to have a Godot `.exe`, (this is the same `.exe` that you use to build the game).
+### Godot
+You need to have Godot installed, do so [here](https://godotengine.org/download/).
 Verify that you can use this through the cli:
 ```
 $ godot --version
 3.2.1.stable.mono.official
 ```
-If you do not see above output, it likely means that your path isn't set up correctly (or the `.exe` has a different name). There are two things you can do now;
-either you fix this by setting the path correctly so that you can use `godot` anywhere.
+If you do not see above output, there are several things you can do depending on your OS.
+
+#### Windows
+Either you fix this by adding the path to your Godot `.exe` to the PATH environment variable correctly so that you can use `godot` anywhere.
 Or you take the easy route, which is directly calling it as follows:
 ```
 $ "<path-to-godot-dir>/<godot-exe-name>.exe" --version
@@ -31,7 +33,33 @@ $ "D:\Program Files (x86)\Godot\Godot_v3.2.1-stable_mono_win64.exe" --version
 ```
 Which is fine to do for now, as we will only need to use this `.exe` through the cli once for the current setup.
 
-#### Scons
+#### MacOS
+When you install Godot, you can acess the binary file that you can run in the cli with the following path:
+```
+/Applications/<Godot>.app/Contents/MacOS/Godot
+```
+The name of the `.app` depends on whether you installed the Mono or the non Mono version.
+
+Just like for Windows, there's an easy route you can take by directly calling the path as follows
+```
+$ /Applications/<Godot>.app/Contents/MacOS/Godot --version
+```
+So for example (I have the Mono version):
+```
+$ /Applications/Godot_mono.app/Contents/MacOS/Godot --version
+0: /Applications/Godot_mono.app/Contents/MacOS/Godot
+1: --version
+Current path: /Users/kevin/Development/contextproject
+3.2.1.stable.mono.official
+```
+
+Or you make it so that you can use the `godot` command by adding the following:
+```
+$ ln -s /Applications/<Godot>.app/Contents/MacOS/Godot /usr/local/bin/godot
+```
+For more information on this, see [here](https://godotengine.org/qa/22104/how-to-run-a-project-in-godot-from-command-on-mac).
+
+### Scons
 Go to their [site](https://scons.org/pages/download.html) and download the 3.1.2 version of the "SCons Packages" (so not "scons-local Packages" or "scons-src Packages").
 Extract the package and follow the instructions in the `README.md`.
 
@@ -54,7 +82,7 @@ Do not proceed until this works.
 #### MacOS
 Installing OpenCV 4 for MacOS requires Xcode and homebrew.
 
-1.	**Install Xcode**  
+1. **Install Xcode**  
 Install Xcode from the App Store. Open the App Store and search for Xcode and then click the Get button
 
 2. **Install Homebrew**  
@@ -71,18 +99,20 @@ If these the steps were not sufficient, additional installation steps can be fou
 On Windows, you will need to install Visual Studio so that you have access to `cl.exe`, which you need when building C++.
 Check out this [part](https://docs.godotengine.org/en/stable/development/compiling/compiling_for_windows.html#installing-visual-studio-caveats) of Godots documentation on VS.
 
-### Cloning
+## Cloning
+If you've already cloned the project before, skip this step.
 Since this branch includes a submodule, you need to clone recursively so that submodules get cloned as well:
 ```
 $ git clone --recursive git@gitlab.ewi.tudelft.nl:TI2806/2019-2020/cg-01/main-repository.git
 ```
-If you've already cloned the project, but now need to switch to this branch and get the submodule:
+
+## Submodules
+If you've already cloned the project, but have yet to get the submodules:
 ```
-$ git checkout --track origin/gdnative
-$ git submodule update --init
+$ git submodule update --init --recursive
 ```
 
-### Building bindings
+## Building bindings
 We need to generate the Godot C++ bindings so that we can make use of these when compiling our C++ scripts.
 That's why the submodule `godot-cpp` is included, they contain the source files to generate the bindings.
 
@@ -110,7 +140,7 @@ This step might take a little bit, when this has succeeded, you should have libr
 
 Previous steps should be a "do once and forget" situation. The step that follows is what you need to do each time you make changes to the plugin so that you can import the output of that into Godot.
 
-### Building the GDNative plugin
+## Building the GDNative plugin
 This section operates under the assumption that you have set your `OPENCV_DIR` correctly so that `scons` can find the OpenCV libraries on your computer. See `SConstruct` for the paths.
 Go back to the root of the project in your terminal.
 Now run the following, where `<platform>` is `windows`, `osx` or `linux`.
@@ -122,7 +152,7 @@ These libraries are the result of building the GDNative plugin and you should be
 The current Godot project already ataches the built script to a node, so you can simply start the Godot project to test out if it's working.
 If it's not working, you'll get errors. If you have no errors, it's working. :sunglasses:
 
-### More information
+## More information
 * [Godot's tutorial on GDNative C++](https://docs.godotengine.org/en/stable/tutorials/plugins/gdnative/gdnative-cpp-example.html).
 
 **Developer Team:**
