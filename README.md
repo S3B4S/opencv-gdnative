@@ -122,7 +122,7 @@ Once you're in the root of the project in your terminal, call the following:
 ```
 $ <godot> --gdnative-generate-json-api api.json
 ```
-With `<godot>` being either the command `godot`, or a path directly to the `.exe` file as described in the prerequisites.
+With `<godot>` being either the command `godot`, or a path directly to the executable file as described in the prerequisites.
 The resulting `api.json` file should be placed in the root directory of the project.
 
 Now we'll actually generate the bindings.
