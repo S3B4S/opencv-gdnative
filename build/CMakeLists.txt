@@ -17,6 +17,16 @@ find_package(OpenCV 4.3 EXACT REQUIRED PATHS /OpenCV/opencv-4.3.0-vc16/)
 include_directories(AFTER "${OpenCV_INCLUDE_DIRS}" "include")
 link_libraries(${OpenCV_LIBS})
 
-# add the executable
+link_libraries("../godot-cpp/bin/libgodot-cpp.windows.debug.64")
+
+# create the .dll
 #file(GLOB source_list "src/*.h" "src/*.cpp")
-add_library(bomb SHARED "src/gdexample.cpp" "src/gdlibrary.cpp")
+add_library(libgdexample SHARED "../src/gdexample.cpp" "../src/gdlibrary.cpp")
+
+include_directories(
+  "../godot-cpp/godot_headers/"
+  "../godot-cpp/include/"
+  "../godot-cpp/include/core/"
+  "../godot-cpp/include/gen/"
+  "../godot-cpp/bin/"
+)
