@@ -101,6 +101,7 @@ Check out this [part](https://docs.godotengine.org/en/stable/development/compili
 
 ## Cloning
 If you've already cloned the project before, skip this step.
+
 Since this branch includes a submodule, you need to clone recursively so that submodules get cloned as well:
 ```
 $ git clone --recursive git@gitlab.ewi.tudelft.nl:TI2806/2019-2020/cg-01/main-repository.git
@@ -141,7 +142,7 @@ This step might take a little bit, when this has succeeded, you should have libr
 Previous steps should be a "do once and forget" situation. The step that follows is what you need to do each time you make changes to the plugin so that you can import the output of that into Godot.
 
 ## Building the GDNative plugin
-This section operates under the assumption that you have set your `OPENCV_DIR` correctly so that `scons` can find the OpenCV libraries on your computer. See `SConstruct` for the paths.
+This section operates under the assumption that you have set your `OPENCV_DIR` correctly so that `scons` can find the OpenCV libraries on your computer. See the `SConstruct` file for the paths.
 Go back to the root of the project in your terminal.
 Now run the following, where `<platform>` is `windows`, `osx` or `linux`.
 ```
