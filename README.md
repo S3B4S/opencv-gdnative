@@ -83,15 +83,53 @@ Do not proceed until this works.
 Installing OpenCV 4 for MacOS requires Xcode and homebrew.
 
 1. **Install Xcode**  
+
 Install Xcode from the App Store. Open the App Store and search for Xcode and then click the Get button
 
 2. **Install Homebrew**  
+
 Open the terminal and execute the following code:  
-``` /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"```
+```
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+```
 
 3. **Install OpenCV**   
+
 Open the terminal and execute the following code:  
-```brew install opencv```
+```
+brew install opencv
+```
+
+4. **Set the OPENCV_DIR environment variable**
+
+In `/SConstruct` the environment variable named `OPENCV_DIR` will be looked up to find where OpenCV is located.
+
+If you have installed it through homebrew, most likely you can find the OpenCV dependency under the location `/usr/local/opt/opencv@4`. Double check to be sure, you can `cd` to it for example.
+
+If your path to OpenCV is different, make sure that whatever directory your path points to, it includes the following directories:
+1. `<path_to_OpenCV>/bin/`
+2. `<path_to_OpenCV>/include/opencv4/`
+
+When you've confirmed the location of your dependency, it needs to be added to your environment variables. This is done in either `~/.bash_profile` or `~/.zshrc`, choose the one that's most appropriate for you. I'm going with `.zshrc` for the example. Replace that with `.bash_profie` if necessary.
+
+To add the environment variable you can either run the following command:
+```
+$ echo "export OPENCV_DIR=\"/usr/local/opt/opencv@4\"" >> ~/.zshrc
+```
+
+Or open the file in an editor of choice, and add the following line:
+```
+export OPENCV_DIR="/usr/local/opt/opencv@4"
+```
+
+After you've added this your current environment still needs to "read" these values in, which can be done in the 2 following ways:
+1. Run `$ source ~/.bash_profile` or `$ source ~/.zshrc` (whatever file you added the previous line to).
+2. The good ol' way: close and re-open terminal.
+
+You can check if the environment is set correctly by running `$ env` which gives you a list, in that list you should see
+```
+OPENCV_DIR=/usr/local/opt/opencv@4
+```
 
 If these the steps were not sufficient, additional installation steps can be found [here](https://medium.com/@jaskaranvirdi/setting-up-opencv-and-c-development-environment-in-xcode-b6027728003).
 
