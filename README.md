@@ -170,7 +170,7 @@ To speed up compilation, add `-j<N>` to the `scons` command, where `<N>` is the 
 
 Replace `<platform>` with `windows`, `osx` or `linux` depending on your OS.
 
-Note: Add `bits=64` to the `scons` command if you're on Windows.
+Note: Add `bits=64` to the `scons` command if you're building for Windows.
 ```
 $ cd godot-cpp
 $ scons platform=<platform> generate_bindings=yes use_custom_api_file=yes custom_api_file=../api.json -j4
