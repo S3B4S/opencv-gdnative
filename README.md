@@ -123,7 +123,7 @@ export OPENCV_DIR="/usr/local/opt/opencv@4"
 ```
 
 After you've added this your current environment still needs to "read" these values in, which can be done in the 2 following ways:
-1. Run `$ source ~/.bash_profile` or `$ source ~/.zshrc` (whatever file you added the previous line to).
+1. Run `$ source ~/.zshrc`.
 2. The good ol' way: close and re-open terminal.
 
 You can check if the environment is set correctly by running `$ env` which gives you a list, in that list you should see
