@@ -163,24 +163,28 @@ if env['platform'] == "osx" or env['platform'] in ('x11', 'linux'):
     ])
 # For windows, these files have been filled under assumption that you downloaded the .zip release of 4.3.0 from sourceforge
 elif env['platform'] == "windows":
+    print(os.environ['OPENCV_DIR'])
+    # exit()
     env.Append(CPPPATH=[os.environ['OPENCV_DIR'] + "/include/"])
     env.Append(LIBPATH=[os.environ['OPENCV_DIR'] + "/lib/"])
+    # print(env["LIBPATH"])
+    # exit()
     env.Append(LIBS=[
-        "opencv_calib3d430d",
-        "opencv_core430d",
-        "opencv_dnn430d",
-        "opencv_features2d430d",
-        "opencv_flann430d",
-        "opencv_gapi430d",
-        "opencv_highgui430d",
-        "opencv_imgcodecs430d",
-        "opencv_imgproc430d",
-        "opencv_ml430d",
-        "opencv_objdetect430d",
-        "opencv_photo430d",
-        "opencv_stitching430d",
-        "opencv_video430d",
-        "opencv_videoio430d",
+        "opencv_calib3d430",
+        "opencv_core430",
+        "opencv_dnn430",
+        "opencv_features2d430",
+        "opencv_flann430",
+        "opencv_gapi430",
+        "opencv_highgui430",
+        "opencv_imgcodecs430",
+        "opencv_imgproc430",
+        "opencv_ml430",
+        "opencv_objdetect430",
+        "opencv_photo430",
+        "opencv_stitching430",
+        "opencv_video430",
+        "opencv_videoio430",
     ])
 
 # tweak this if you want to use different folders, or more folders, to store your source code in.
