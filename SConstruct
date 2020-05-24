@@ -163,12 +163,8 @@ if env['platform'] == "osx" or env['platform'] in ('x11', 'linux'):
     ])
 # For windows, these files have been filled under assumption that you downloaded the .zip release of 4.3.0 from sourceforge
 elif env['platform'] == "windows":
-    print(os.environ['OPENCV_DIR'])
-    # exit()
     env.Append(CPPPATH=[os.environ['OPENCV_DIR'] + "/include/"])
     env.Append(LIBPATH=[os.environ['OPENCV_DIR'] + "/lib/"])
-    # print(env["LIBPATH"])
-    # exit()
     env.Append(LIBS=[
         "opencv_calib3d430",
         "opencv_core430",
