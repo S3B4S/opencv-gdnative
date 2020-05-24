@@ -1,3 +1,6 @@
+# The root of this directory is what the environment variable OPENCV_DIR points to, this environment variable is used in SConstruct.
+# It does not include all the files & directories (there are too many), but I hope I included the essential ones.
+
 <OPENCV_DIR>
 |-bin/
 |---cldnn_global_custom_kernels/
