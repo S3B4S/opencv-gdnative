@@ -14,5 +14,22 @@ OSX.64="res://bin/osx/libgdexample.dylib"
 [dependencies]
 
 X11.64=[  ]
-Windows.64=[  ]
+Windows.64=[
+  "res://bin/win64/opencv_calib3d430.dll",
+  "res://bin/win64/opencv_core430.dll",
+  "res://bin/win64/opencv_dnn430.dll",
+  "res://bin/win64/opencv_features2d430.dll",
+  "res://bin/win64/opencv_flann430.dll",
+  "res://bin/win64/opencv_gapi430.dll",
+  "res://bin/win64/opencv_highgui430.dll",
+  "res://bin/win64/opencv_imgcodecs430.dll",
+  "res://bin/win64/opencv_imgproc430.dll",
+  "res://bin/win64/opencv_ml430.dll",
+  "res://bin/win64/opencv_objdetect430.dll",
+  "res://bin/win64/opencv_photo430.dll",
+  "res://bin/win64/opencv_stitching430.dll",
+  "res://bin/win64/opencv_video430.dll",
+  "res://bin/win64/opencv_videoio430.dll",
+  "res://bin/win64/opencv_videoio_ffmpeg430_64.dll"
+]
 OSX.64=[  ]
