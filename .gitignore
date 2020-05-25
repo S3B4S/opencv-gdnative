@@ -365,7 +365,7 @@ pip-selfcheck.json
 *.os
 .vs/
 
-Godot/[Bb]in/*
+!Godot/[Bb]in/win64/*
 !Godot/[Bb]in/*.gdnlib
 !Godot/[Bb]in/*.gdns
 build/*
